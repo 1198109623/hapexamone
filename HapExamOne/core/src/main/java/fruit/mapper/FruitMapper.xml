@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fruit.mapper.FruitMapper">
+    <update id="myUpdate" parameterType="fruit.dto.Fruit">
+        UPDATE fruit
+        <if test="name != null">SET name = #{name}</if>
+        <if test="price != null">SET price = #{price}</if>
+        <if test="producingArea != null">SET producing_area = #{producingArea}</if>
+        SET object_version_number = object_version_number + 1
+        WHERE id = #{id} AND object_version_number = #{objectVersionNumber}
+    </update>
+</mapper>
